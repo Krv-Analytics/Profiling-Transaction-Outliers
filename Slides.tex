@@ -29,8 +29,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % 
-\title[Transaction Outlier Detection]{Identification and Classification of Transaction Outliers}
-\institute{Applying isolation detection and topological profiling to GL Transaction data  }
+\title[Transaction Anomaly Detection]{Identification and Classification of Transaction Anomalies}
+\institute{Applying isolation outlier detection and topological profiling to GL Transaction data.}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Slides
@@ -42,6 +42,38 @@
     \titlepage
   \end{frame}
 
+\begin{frame}{Some Terminology}
+  \begin{itemize}
+    \item \textit{Outlier}: an extrememal transaction (ie differeing extensively from a reference set of transactions) 
+    \item \textit{Anomaly}: an unexpected pattern of transactions
+    \item \textit{Suspect}: a transaction that has been flagged as potentially erroneous or malicious
+    \item \textit{Guilty Transaction}: a confirmed erroneous or malicious transaction (and intuitively there also exist innocent suspects).
+  \end{itemize}
+\end{frame}
 
+\begin{frame}{The Goal}
+We split the obvious end of identifying all guilty transactions into two simpler subgoals: 
+\begin{enumerate}
+  \item Identifing a set of suspects 
+  \item Profiling Suspects 
+\end{enumerate}
+Performing these two tasks will generate a case against suspects. Like a competent prosecutor, only convincing cases should 
+lead to an accusal. 
+\end{frame}
+  \begin{frame}{Building a Good Case}
+    Sticking with our metaphor, the classic "motive, means, opportunity" evaluation
+    will translate to "difference and danger" in our data-driven perspective. 
+    \begin{itemize}
+      \item \textit{Difference}: also to be thought of as distance, refers to the necessary 
+      separation between guilty and innocent transactions.  
+      \item \textit{Danger}: contexualized properties that identify erratic, peculiar, 
+    unexplained or risky behavior    
+    \end{itemize}
+    
+  \end{frame}
+
+  \begin{frame}{Establishing Difference}
+    As a start, we construct a suspect list comprised of elements 
+  \end{frame}
 
 \end{document}
