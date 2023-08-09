@@ -73,7 +73,39 @@ lead to an accusal.
   \end{frame}
 
   \begin{frame}{Establishing Difference}
-    As a start, we construct a suspect list comprised of elements 
+    We begin our suspect list with loose outliers. These suspects can be thought 
+    of as misfits of normalcy, and as such immediatly possess \textit{difference}.
+    To do this, we construct an Isolation Forest that
+    \begin{itemize}
+      \item identifies transactions with signifcant difference from the global norm
+      \item ignores highly regular, indistinguishable transactions 
+    \end{itemize}
+    Note: There undoubedly may exist guilty transactions flagged as inliers when considering
+    the dataset globally. Nevertheless, we present this as a possible curation method of a suspect
+    list.
   \end{frame}
 
+  \begin{frame}{Isolation Forests}
+    *** Explain with reference to transactions**** 
+  \end{frame}
+
+
+  \begin{frame}{Classification}
+    *** Run THEMA to generate a graphical represenation of suspects ****
+    *** Image of dataframe => image of graph **** 
+  \end{frame}
+
+  \begin{frame}{Profiling}
+      *** Group Characteristics => creating a Profile ***
+      *** Entails an understanding of transaction dangers*** 
+      *** Cash Account analysis **** 
+      *** Find the cash account group**** 
+      Shteeve we need your help here. 
+  \end{frame}
+
+
+  \begin{frame}{Results}
+    *** Solely Cash Account Analysis *** 
+    *** Display transactions w/ profile *** 
+  \end{frame}
 \end{document}
