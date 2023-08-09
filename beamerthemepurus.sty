@@ -1,0 +1,138 @@
+% `beamerthemepurus.sty`: main style for the `purus` beamer theme. This
+% is a work in progress.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Packages
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Favourite packages that I am *almost always* using in presentations,
+% so it makes sense to include them here.
+\usepackage                   {amsmath}
+\usepackage                   {amssymb}
+\usepackage[british]          {babel}
+\usepackage                   {booktabs}
+\usepackage                   {csquotes}
+\usepackage                   {dsfont}
+\usepackage                   {fontawesome}
+\usepackage                   {fontspec}
+\usepackage                   {mathtools}
+\usepackage                   {microtype}
+\usepackage                   {manfnt}
+\usepackage                   {mleftright}
+\usepackage                   {siunitx}
+\usepackage                   {subcaption}
+\usepackage                   {tabu}
+\usepackage[absolute, overlay]{textpos}
+\usepackage                   {xspace}
+
+\hypersetup{
+  colorlinks = false,
+}
+
+% Suppresses the 'Figure' text and other labels, both for regular
+% captions and for subcaptions.
+\captionsetup[figure]   {labelformat = empty}
+\captionsetup[subfigure]{labelformat = empty}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Theme configuration
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\mode<presentation>
+
+\usecolortheme{purus}
+\usefonttheme{purus}
+\useinnertheme{purus}
+\useoutertheme{purus}
+
+% Disable rules for footnotes; this makes the display less cluttered in my opinion.
+\renewcommand{\footnoterule}{}
+
+% Consistent look and feel for itemize and enumerate items
+\setbeamertemplate{itemize items}  [circle]
+\setbeamertemplate{enumerate items}[square]
+
+% \setbeamertemplate{itemize item}{%
+%   \raisebox{0.165\baselineskip}{\tiny\manstar}
+% }
+
+
+% Disable all navigation symbols because they are cumbersome and I never
+% use them.
+\setbeamertemplate{navigation symbols}{}
+
+\AtBeginSection[]
+{
+  \begin{frame}<beamer>
+    \frametitle{Outline}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+
+\newcommand  {\nd}{\textsuperscript{\textup{nd}}\xspace}
+\renewcommand{\th}{\textsuperscript{\textup{th}}\xspace}
+
+% Creates a standalone slide with a single question or sentence
+\newcommand{\standalone}[1]{
+  \begin{frame}
+    \begin{center}
+      \begin{huge}%
+        #1%
+      \end{huge}
+    \end{center}
+  \end{frame}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Bibliography
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[
+  backend      = biber,
+  doi          = false,
+  maxcitenames = 6,
+  style        = numeric,
+  giveninits   = true,
+  isbn         = false,
+]{biblatex}
+
+\addbibresource{Slides.bib}
+
+% Concatenate different fields using commas instead of periods or
+% something weird.
+\renewcommand*{\newunitpunct}{\addcomma\space}
+
+% Suppress "in" for journal articles.
+\renewbibmacro{in:}{}
+
+% Remove the year from the citation of the article in order to make the
+% display less cluttered.
+\renewbibmacro*{issue+date}{%
+  \setunit{\addcomma\space}
+    \iffieldundef{issue}
+      {\usebibmacro{date}}
+      {\printfield{issue}%
+       \setunit*{\addspace}%
+       \usebibmacro{date}}%
+  \newunit}
+
+\AtEveryBibitem{\clearfield{month}}
+\AtEveryCitekey{\clearfield{month}}
+
+\renewcommand*{\mkbibcompletename}[1]{%
+  \ifitemannotation{highlight}
+    {\textbf{#1}}
+    {#1}%
+  \ifitemannotation{first}
+    {$^\ast$}
+    {}%
+  \ifitemannotation{last}
+    {$^\dagger$}
+    {}%
+}%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Convenience
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\comment}[1]{}

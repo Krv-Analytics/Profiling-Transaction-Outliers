@@ -1,0 +1,29 @@
+% Ensures that no additional spacing will be added to each of the
+% blocks; this simplifies and calms the layout somewhat.
+\makeatletter
+\addtobeamertemplate{block begin}{%
+\def\@listi{\leftmargin\leftmargini
+              \topsep    0pt
+              \parsep    0pt
+              \itemsep   3pt plus 2pt minus 3pt}
+\partopsep 0pt
+}
+\makeatother
+
+\defbeamertemplate*{title page}{customized}[1][]
+{
+  \hspace{8cm}
+  \includegraphics[height=0.60cm]{Logos/HMGU}\quad \includegraphics[height=0.40cm]{Logos/AIH} \par%
+  \vspace{0.6cm}
+  \hspace{8cm}
+  \includegraphics[height=0.40cm]{Logos/ucsc_compsi_logo.pdf}\par%  
+  \vspace{0.6cm}
+  \hspace{8cm}
+  \includegraphics[height=0.80cm]{Logos/logo-bren.pdf}\par
+  \vspace{1cm}
+  %
+  {\usebeamerfont{title}\inserttitle}\par%
+  {\usebeamerfont{subtitle}\insertsubtitle}\par%
+  {\usebeamerfont{author} \insertauthor}\par%
+  {\usebeamerfont{institute}\insertinstitute}\par%
+}

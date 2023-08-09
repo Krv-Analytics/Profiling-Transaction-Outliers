@@ -1,0 +1,47 @@
+%!TEX TS-program = lualatex
+%!TEX encoding   = UTF-8 Unicode
+
+\documentclass[aspectratio=169]{beamer}
+
+\usepackage{tikz}
+\usepackage{svg}
+\usepackage{subfiles}
+\usepackage{hyperref}
+\usepackage{hyperxmp}
+\usepackage{qrcode}
+\usepackage{figures}
+\usepackage[export]{adjustbox}
+
+
+\hypersetup{
+  pdfcopyright = {Copyright (C) 2023 by Krv Analytics.
+    All rights reserved. Do not distribute.},
+  pdflicenseurl = {http://latex-community.org/license/}}
+  
+\tikzstyle{box} = [rectangle, rounded corners, minimum width=1.5cm, minimum height=1cm,text centered, draw=black, fill=white]
+\tikzstyle{box2} = [rectangle, rounded corners, minimum width=0.5cm, minimum height=0.5cm,text centered, draw=black, fill=white]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
+\usetheme{purus}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Title
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% 
+\title[Transaction Outlier Detection]{Identification and Classification of Transaction Outliers}
+\institute{Applying isolation detection and topological profiling to GL Transaction data  }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Slides
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+  \begin{frame}[noframenumbering, plain]
+  \setlength {\marginparwidth }{2cm}
+    \titlepage
+  \end{frame}
+
+
+
+\end{document}

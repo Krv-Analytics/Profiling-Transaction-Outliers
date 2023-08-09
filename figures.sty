@@ -1,0 +1,404 @@
+%% All packages and declarations needed to generate figures
+
+
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage{dsfont}
+\usepackage{graphicx}
+\usepackage{microtype}
+\usepackage{mleftright}
+\usepackage{multicol}
+\usepackage{paralist}
+\usepackage{siunitx}
+\usepackage{subcaption}
+\usepackage{thm-restate}
+\usepackage{xspace}
+\usepackage{multirow}
+\usepackage{pdfpages}
+\usepackage{subfiles}
+\usepackage{chemfig}
+
+
+\captionsetup{%
+  subrefformat = parens,
+  labelfont    = it,
+}
+
+\usepackage{tikz}
+\usepackage{tikz-network}
+\usetikzlibrary{calc}
+\usepackage{pdftexcmds}
+\usetikzlibrary{arrows}
+\usetikzlibrary{calc}
+\usetikzlibrary{chains}
+\usetikzlibrary{fit}
+\usetikzlibrary{matrix}
+\usetikzlibrary{positioning}
+\usetikzlibrary{scopes}
+\usetikzlibrary{external}
+\usepackage{xcolor}
+
+\usepackage{tikz-network}
+\usepackage{pgfplots}
+
+\usepackage{smartdiagram}
+
+
+\usetikzlibrary{arrows}
+\usetikzlibrary{calc}
+\usetikzlibrary{chains}
+\usetikzlibrary{fit}
+\usetikzlibrary{matrix}
+\usetikzlibrary{positioning}
+\usetikzlibrary{scopes}
+\usetikzlibrary{external}
+
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\usepackage{subcaption}
+\usepgfplotslibrary{groupplots}
+\usepackage{siunitx}
+\usepgfplotslibrary{colorbrewer}
+\pgfplotsset{cycle list/Dark2-8}
+\usetikzlibrary{patterns}
+
+\DeclareRobustCommand\legendbox[1]{\textcolor{#1}{}\begin{tikzpicture}[x=0.2cm, y=0.2cm] \draw [color=black, fill=#1!20,postaction={pattern=crosshatch}] (0,0) -- (0,1) -- (0.6,1) -- (0.6,0) -- (0, 0); \end{tikzpicture}}
+
+\pgfplotsset{compat=newest} % Allows to place the legend below plot
+\usepgfplotslibrary{units} % Allows to enter the units nicely
+\sisetup{
+  round-mode          = places,
+  round-precision     = 2,
+}
+
+\usepackage[textsize=tiny]{todonotes}
+\newcommand{\Shanto}[1]{\todo[color=green!10, linecolor=black!50!green]{\textbf{SR:} #1}}
+
+\usetikzlibrary{matrix, arrows}
+\usetikzlibrary{shapes.geometric}
+\DeclareMathOperator{\im}{Im}
+\makeatletter
+\tikzset{
+  edge node/.code={%
+      \expandafter\def\expandafter\tikz@tonodes\expandafter{\tikz@tonodes #1}}}
+\makeatother
+\tikzset{
+  subseteq/.style={
+    draw=none,
+    edge node={node [sloped, allow upside down, auto=false]{$\subseteq$}}},
+  Subseteq/.style={
+    draw=none,
+    every to/.append style={
+      edge node={node [sloped, allow upside down, auto=false]{$\subseteq$}}}
+  }
+}
+
+
+\definecolor{bleu}     {RGB}{ 49,140,231}
+\definecolor{cardinal} {RGB}{196, 30, 58}
+\definecolor{emerald}  {RGB}{ 80,200,120}
+\definecolor{lightgrey}{RGB}{230,230,230}
+
+%OR
+\definecolor{ORedge1}{rgb}{1.         0.72244521 0.        }
+\definecolor{ORedge2}{rgb}{1.         0.74028451 0.        }
+\definecolor{ORedge3}{rgb}{1.         0.7689504  0.01679354}
+\definecolor{ORedge4}{rgb}{1.         0.74028451 0.        }
+\definecolor{ORedge5}{rgb}{1.         0.72244521 0.        }
+\definecolor{ORedge6}{rgb}{1.        0.7153095 0.       }
+\definecolor{ORedge7}{rgb}{1.         0.74028451 0.        }
+\definecolor{ORedge8}{rgb}{1.         0.70282199 0.        }
+\definecolor{ORedge9}{rgb}{1.         0.74028451 0.        }
+\definecolor{ORedge10}{rgb}{1.         0.74028451 0.        }
+
+%Resistance
+\definecolor{Redge1}{rgb}{0.94560554 0.95613995 0.29536332}
+\definecolor{Redge2}{rgb}{1.       0.727797 0.      }
+\definecolor{Redge3}{rgb}{0.98048443 0.9264283  0.17134948}
+\definecolor{Redge4}{rgb}{1.         0.84036909 0.05997693}
+\definecolor{Redge5}{rgb}{1.         0.69033449 0.        }
+\definecolor{Redge6}{rgb}{0.99820069 0.60765859 0.        }
+\definecolor{Redge7}{rgb}{1.         0.71887735 0.        }
+\definecolor{Redge8}{rgb}{1.         0.75043445 0.00559785}
+\definecolor{Redge9}{rgb}{1.         0.69925413 0.        }
+\definecolor{Redge10}{rgb}{1.         0.72958093 0.        }
+
+%Forman
+\definecolor{edge1}{rgb}{1.         0.85359477 0.06797386}
+\definecolor{edge2}{rgb}{1.         0.85359477 0.06797386}
+\definecolor{edge3}{rgb}{0.75105883 0.84 0.40188235}
+\definecolor{edge4}{rgb}{1.         0.74028451 0.        }
+\definecolor{edge5}{rgb}{1.         0.66535948 0.        }
+\definecolor{edge6}{rgb}{0.99598616 0.58329873 0.        }
+\definecolor{edge7}{rgb}{0.88199369 0.85918714 0.13301246}
+\definecolor{edge8}{rgb}{0.98823529 0.49803922 0.        }
+\definecolor{edge9}{rgb}{1.         0.74028451 0.        }
+\definecolor{edge10}{rgb}{1.         0.85359477 0.06797386}
+
+
+
+\newcommand{\reals}{\mathds{R}\xspace}
+\newcommand{\FRC}  {\ensuremath{\kappa_{\text{FR}}\xspace}}
+\newcommand{\ORC}  {\ensuremath{\kappa_{\text{OR}}\xspace}}
+\newcommand{\REC}  {\ensuremath{\kappa_{\text{R}}\xspace}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Part 3: Forman Filtration %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \tikzset{VertexStyle/.style = {shape = circle,fill = black,minimum size = 2,inner sep=0}}
+
+\newsavebox\tikzfilterA
+  \savebox\tikzfilterA{
+  \begin{tikzpicture} 
+%  Edge Color Definitions RGB
+% WISTIA 
+\begin{scope}[scale=0.5]
+\clip (0,0) rectangle (6,6);
+\Vertex[x=3.867,y=0.473]{0}
+\Vertex[x=1.296,y=3.027]{1}
+\Vertex[x=3.457,y=4.537]{2}
+\Vertex[x=1.057,y=1.151]{3}
+\Vertex[x=4.850,y=4.316]{4}
+\Vertex[x=5.650,y=2.162]{5}
+\Vertex[x=4.683,y=2.546]{6}
+\Vertex[x=2.791,y=2.188]{7}
+% \Edge[color=edge1](0)(2)
+% \Edge[color=edge2](0)(3)
+% \Edge[color=edge3](0)(5)
+% \Edge[color=edge4](0)(7)
+% \Edge[color=edge5](1)(2)
+% \Edge[color=edge6](1)(7)
+% \Edge[color=edge7](2)(6)
+% \Edge[color=edge8](2)(7)
+% \Edge[color=edge9](4)(5)
+% \Edge[color=edge10](5)(6)
+\end{scope}
+\end{tikzpicture}
+}
+
+\newsavebox\tikzfilterB
+  \savebox\tikzfilterB{
+  \begin{tikzpicture} 
+%  Edge Color Definitions RGB
+% WISTIA 
+\begin{scope}[scale=0.5]
+\clip (0,0) rectangle (6,6);
+\Vertex[x=3.867,y=0.473]{0}
+\Vertex[x=1.296,y=3.027]{1}
+\Vertex[x=3.457,y=4.537]{2}
+\Vertex[x=1.057,y=1.151]{3}
+\Vertex[x=4.850,y=4.316]{4}
+\Vertex[x=5.650,y=2.162]{5}
+\Vertex[x=4.683,y=2.546]{6}
+\Vertex[x=2.791,y=2.188]{7}
+% \Edge[color=edge1](0)(2)
+% \Edge[color=edge2](0)(3)
+    \Edge[color=edge3](0)(5)
+% \Edge[color=edge4](0)(7)
+% \Edge[color=edge5](1)(2)
+% \Edge[color=edge6](1)(7)
+% \Edge[color=edge7](2)(6)
+% \Edge[color=edge8](2)(7)
+% \Edge[color=edge9](4)(5)
+% \Edge[color=edge10](5)(6)
+\end{scope}
+\end{tikzpicture}
+}
+
+\newsavebox\tikzfilterC
+  \savebox\tikzfilterC{
+  \begin{tikzpicture} 
+%  Edge Color Definitions RGB
+% WISTIA 
+\begin{scope}[scale=0.5]
+\clip (0,0) rectangle (6,6);
+\Vertex[x=3.867,y=0.473]{0}
+\Vertex[x=1.296,y=3.027]{1}
+\Vertex[x=3.457,y=4.537]{2}
+\Vertex[x=1.057,y=1.151]{3}
+\Vertex[x=4.850,y=4.316]{4}
+\Vertex[x=5.650,y=2.162]{5}
+\Vertex[x=4.683,y=2.546]{6}
+\Vertex[x=2.791,y=2.188]{7}
+% \Edge[color=edge1](0)(2)
+% \Edge[color=edge2](0)(3)
+\Edge[color=edge3](0)(5)
+% \Edge[color=edge4](0)(7)
+% \Edge[color=edge5](1)(2)
+% \Edge[color=edge6](1)(7)
+\Edge[color=edge7](2)(6)
+% \Edge[color=edge8](2)(7)
+% \Edge[color=edge9](4)(5)
+% \Edge[color=edge10](5)(6)
+\end{scope}
+\end{tikzpicture}
+}
+
+\newsavebox\tikzfilterD
+  \savebox\tikzfilterD{
+  \begin{tikzpicture} 
+%  Edge Color Definitions RGB
+% WISTIA 
+\begin{scope}[scale=0.5]
+\clip (0,0) rectangle (6,6);
+\Vertex[x=3.867,y=0.473]{0}
+\Vertex[x=1.296,y=3.027]{1}
+\Vertex[x=3.457,y=4.537]{2}
+\Vertex[x=1.057,y=1.151]{3}
+\Vertex[x=4.850,y=4.316]{4}
+\Vertex[x=5.650,y=2.162]{5}
+\Vertex[x=4.683,y=2.546]{6}
+\Vertex[x=2.791,y=2.188]{7}
+\Edge[color=edge1](0)(2)
+\Edge[color=edge2](0)(3)
+\Edge[color=edge3](0)(5)
+% \Edge[color=edge4](0)(7)
+% \Edge[color=edge5](1)(2)
+% \Edge[color=edge6](1)(7)
+\Edge[color=edge7](2)(6)
+% \Edge[color=edge8](2)(7)
+% \Edge[color=edge9](4)(5)
+\Edge[color=edge10](5)(6)
+\end{scope}
+\end{tikzpicture}
+}
+
+
+\newsavebox\tikzfilterE
+  \savebox\tikzfilterE{
+  \begin{tikzpicture} 
+%  Edge Color Definitions RGB
+% WISTIA 
+\begin{scope}[scale=0.5]
+\clip (0,0) rectangle (6,6);
+\Vertex[x=3.867,y=0.473]{0}
+\Vertex[x=1.296,y=3.027]{1}
+\Vertex[x=3.457,y=4.537]{2}
+\Vertex[x=1.057,y=1.151]{3}
+\Vertex[x=4.850,y=4.316]{4}
+\Vertex[x=5.650,y=2.162]{5}
+\Vertex[x=4.683,y=2.546]{6}
+\Vertex[x=2.791,y=2.188]{7}
+\Edge[color=edge1](0)(2)
+\Edge[color=edge2](0)(3)
+\Edge[color=edge3](0)(5)
+\Edge[color=edge4](0)(7)
+% \Edge[color=edge5](1)(2)
+% \Edge[color=edge6](1)(7)
+\Edge[color=edge7](2)(6)
+% \Edge[color=edge8](2)(7)
+\Edge[color=edge9](4)(5)
+\Edge[color=edge10](5)(6)
+\end{scope}
+\end{tikzpicture}
+}
+
+\newsavebox\tikzfilterF
+  \savebox\tikzfilterF{
+  \begin{tikzpicture} 
+%  Edge Color Definitions RGB
+% WISTIA 
+\begin{scope}[scale=0.5]
+\clip (0,0) rectangle (6,6);
+\Vertex[x=3.867,y=0.473]{0}
+\Vertex[x=1.296,y=3.027]{1}
+\Vertex[x=3.457,y=4.537]{2}
+\Vertex[x=1.057,y=1.151]{3}
+\Vertex[x=4.850,y=4.316]{4}
+\Vertex[x=5.650,y=2.162]{5}
+\Vertex[x=4.683,y=2.546]{6}
+\Vertex[x=2.791,y=2.188]{7}
+\Edge[color=edge1](0)(2)
+\Edge[color=edge2](0)(3)
+\Edge[color=edge3](0)(5)
+\Edge[color=edge4](0)(7)
+\Edge[color=edge5](1)(2)
+% \Edge[color=edge6](1)(7)
+\Edge[color=edge7](2)(6)
+% \Edge[color=edge8](2)(7)
+\Edge[color=edge9](4)(5)
+\Edge[color=edge10](5)(6)
+\end{scope}
+\end{tikzpicture}
+}
+
+\newsavebox\tikzfilterG
+  \savebox\tikzfilterG{
+  \begin{tikzpicture} 
+%  Edge Color Definitions RGB
+% WISTIA 
+\begin{scope}[scale=0.5]
+\clip (0,0) rectangle (6,6);
+\Vertex[x=3.867,y=0.473]{0}
+\Vertex[x=1.296,y=3.027]{1}
+\Vertex[x=3.457,y=4.537]{2}
+\Vertex[x=1.057,y=1.151]{3}
+\Vertex[x=4.850,y=4.316]{4}
+\Vertex[x=5.650,y=2.162]{5}
+\Vertex[x=4.683,y=2.546]{6}
+\Vertex[x=2.791,y=2.188]{7}
+\Edge[color=edge1](0)(2)
+\Edge[color=edge2](0)(3)
+\Edge[color=edge3](0)(5)
+\Edge[color=edge4](0)(7)
+\Edge[color=edge5](1)(2)
+\Edge[color=edge6](1)(7)
+\Edge[color=edge7](2)(6)
+% \Edge[color=edge8](2)(7)
+\Edge[color=edge9](4)(5)
+\Edge[color=edge10](5)(6)
+\end{scope}
+\end{tikzpicture}
+}
+
+\newsavebox\tikzfilterH
+  \savebox\tikzfilterH{
+  \begin{tikzpicture} 
+%  Edge Color Definitions RGB
+% WISTIA 
+\begin{scope}[scale=0.5]
+\clip (0,0) rectangle (6,6);
+\Vertex[x=3.867,y=0.473]{0}
+\Vertex[x=1.296,y=3.027]{1}
+\Vertex[x=3.457,y=4.537]{2}
+\Vertex[x=1.057,y=1.151]{3}
+\Vertex[x=4.850,y=4.316]{4}
+\Vertex[x=5.650,y=2.162]{5}
+\Vertex[x=4.683,y=2.546]{6}
+\Vertex[x=2.791,y=2.188]{7}
+\Edge[color=edge1](0)(2)
+\Edge[color=edge2](0)(3)
+\Edge[color=edge3](0)(5)
+\Edge[color=edge4](0)(7)
+\Edge[color=edge5](1)(2)
+\Edge[color=edge6](1)(7)
+\Edge[color=edge7](2)(6)
+\Edge[color=edge8](2)(7)
+\Edge[color=edge9](4)(5)
+\Edge[color=edge10](5)(6)
+\end{scope}
+\end{tikzpicture}
+}
+
+\tikzset{%
+  block/.style = {%
+       align          = center,
+       inner sep      = 10pt,
+       minimum width  = 2.75cm,
+       minimum height = 2.75cm,
+       draw           = none,
+     },
+line/.style = {%
+      >=stealth',
+      draw,
+      ->,
+    }%
+  }
+\makeatletter
+\newcommand{\github}[1]{%
+   \href{#1}{\faGithubSquare}%
+}
+\makeatother
