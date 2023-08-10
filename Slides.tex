@@ -12,7 +12,7 @@
 \usepackage{figures}
 \usepackage[export]{adjustbox}
 
-
+\setlength {\marginparwidth }{2cm}
 \hypersetup{
   pdfcopyright = {Copyright (C) 2023 by Krv Analytics.
     All rights reserved. Do not distribute.},
@@ -38,7 +38,6 @@
 
 \begin{document}
   \begin{frame}[noframenumbering, plain]
-  \setlength {\marginparwidth }{2cm}
     \titlepage
   \end{frame}
 
@@ -54,58 +53,124 @@
 \begin{frame}{The Goal}
 We split the obvious end of identifying all guilty transactions into two simpler subgoals: 
 \begin{enumerate}
-  \item Identifing a set of suspects 
   \item Profiling Suspects 
+  \item Identifing outliers in target profiles 
 \end{enumerate}
 Performing these two tasks will generate a case against suspects. Like a competent prosecutor, only convincing cases should 
 lead to an accusal. 
 \end{frame}
   \begin{frame}{Building a Good Case}
     Sticking with our metaphor, the classic "motive, means, opportunity" evaluation
-    will translate to "difference and danger" in our data-driven perspective. 
+    will translate to "danger and difference" from a data-driven perspective. 
     \begin{itemize}
-      \item \textit{Difference}: also to be thought of as distance, refers to the necessary 
-      separation between guilty and innocent transactions.  
       \item \textit{Danger}: contexualized properties that identify erratic, peculiar, 
-    unexplained or risky behavior    
+    unexplained or risky behavior
+    \item \textit{Difference}: also to be thought of as distance, refers to the necessary 
+    separation between guilty and innocent transactions.      
     \end{itemize}
     
   \end{frame}
 
-  \begin{frame}{Establishing Difference}
-    We begin our suspect list with loose outliers. These suspects can be thought 
-    of as misfits of normalcy, and as such immediatly possess \textit{difference}.
-    To do this, we construct an Isolation Forest that
+  \begin{frame}{Evaluating Anomalies}
+    \begin{center}
+      \begin{figure}
+        \includegraphics[width=0.5\textwidth]{images/projection.png}
+        \label{fig:1}
+        \caption{Figure 1: A two dimensional embedding of the suspect list}
+      \end{figure}
+    \end{center}
+  \end{frame}
+
+  \begin{frame}{Evaluating Anomalies}
+    \begin{tikzpicture}[overlay, remember picture]
+      \node at (current page.north east)
+       [anchor=north east, inner sep=0] {\includegraphics[width=0.4\textwidth]{images/projection.png}};
+    \end{tikzpicture} 
     \begin{itemize}
-      \item identifies transactions with signifcant difference from the global norm
-      \item ignores highly regular, indistinguishable transactions 
+      \item In order to identify \textit{dangerous anomalies}, we must create a reference 
+      profile to compare against
+      \item We aim to answer the question: "Who are important neighboring transactions that 
+      may testify to guilt or innocence?" 
     \end{itemize}
-    Note: There undoubedly may exist guilty transactions flagged as inliers when considering
-    the dataset globally. Nevertheless, we present this as a possible curation method of a suspect
-    list.
+    \end{frame}
+
+  \begin{frame}{Classification using THEMA}
+    \begin{center}
+      \includegraphics[width=0.9\textwidth]{images/model12.png}
+    \end{center}
+  \end{frame}
+
+  \begin{frame}{Classification using THEMA}
+        \begin{tikzpicture}[overlay, remember picture]
+          \node at ($(current page.north east) + (-0.05\textwidth,-0.07\textwidth)$)
+           [anchor=north east, inner sep=0] {\includegraphics[width=0.4\textwidth]{images/model12.png}};
+        \end{tikzpicture}   
+        We will associate \textit{danger} with  
+        \begin{itemize}
+          \item Inconsistencies in a group across a relevant attribute   
+          \item Small, localized and highly homogenous groups  
+        \end{itemize}
+        The idea behind these two methods is to flag both singleton suspects and families of suspects based 
+        on thier group profiles. A group profile itself may be \textit{dangerous} or it 
+        may provide a reference point for establishing danger.
+        \end{frame}
+
+
+
+  \begin{frame}{Establishing Difference}
+    We generate a suspect list by identifying outliers in our group profiles. These suspects can be thought 
+    of as misfits of a groups normalcy, and as such possess inherent \textit{differences} from their peer group.
+    To do this, we construct Isolation Forests that
+    \begin{itemize}
+      \item identify transactions with signifcant difference from its groups global norm
+      \item ignore highly regular, indistinguishable transactions 
+    \end{itemize}
+    Note: There may exist guilty transactions who are considered inliers for a particular "problematic" group. The hope 
+    is that a group's profile itself will be flagged. 
   \end{frame}
 
   \begin{frame}{Isolation Forests}
-    *** Explain with reference to transactions**** 
+    \begin{columns}
+      \begin{column}{0.5\textwidth}
+        \includegraphics[width=\textwidth]{images/iso_forest.png}
+      \end{column}
+      \begin{column}{0.5\textwidth}
+        \begin{itemize}
+          \item train a model to recognize isolated patterns within a profile
+          \item outliers isolated due to unexpected behavior are labelled as \textit{dangerous}
+        \end{itemize}
+        \textbf{Remark} Assuming guilty transactions must have some point of difference does not 
+        imply that severe outliers are better suspects.
+      \end{column}
+    \end{columns}  
   \end{frame}
-
-
-  \begin{frame}{Classification}
-    *** Run THEMA to generate a graphical represenation of suspects ****
-    *** Image of dataframe => image of graph **** 
-  \end{frame}
-
-  \begin{frame}{Profiling}
-      *** Group Characteristics => creating a Profile ***
-      *** Entails an understanding of transaction dangers*** 
-      *** Cash Account analysis **** 
-      *** Find the cash account group**** 
-      Shteeve we need your help here. 
-  \end{frame}
-
 
   \begin{frame}{Results}
-    *** Solely Cash Account Analysis *** 
-    *** Display transactions w/ profile *** 
+    \begin{itemize}
+      \item Beginning with a dataset of 31,970 transactions, we present following 17 transactions 
+      as a suspect list 
+      \item This list was built with no prior knowledge of transaction types or account information.
+      \item For the complete suspect list, please consult the associated data file. 
+      \item After constructing an initial list, we create a list targetting anomolous cash account transactions. 
+    \end{itemize}
   \end{frame}
+
+  \begin{frame}{Results}
+    \begin{center}
+    \resizebox{\linewidth}{!}{
+    \begin{tabular}{|c|c|c|c|c|c|}
+      \hline 
+      \textbf{ID} & \textbf{JE Doc Type} & \textbf{G/L Accounts} & \textbf{Cost Center} & \textbf{Profit Center} & \textbf{Assignment Reference} \\\hline
+      510014000013232023  & Customer payment    & \{110000, 104011\}                            & {n/a}	        & {AbbVie}	                 & {20230103, n/a} \\\hline
+      51001000471862020   & HR Payroll Entries  & 	\{230050, 104011, 230060, 600530, 230070\}  & {n/a, 51043}	& {Overheads}	               & {Payroll Liabilitie}\\\hline
+      51001000502952021   & Concur Exp. Posting & \{110010, 104011\}                            & {n/a}	        & {Madiba General}	         & {20210326, Amex March 2021}\\\hline
+      510014000013982023  & Customer payment	  & \{110000, 520130, 104012\}                    & {n/a}         & 	{AbbVie (House), AbbVie} & {20230207, n/a}\\\hline
+      510014000014582023  & Customer payment    & \{110000, 104012\}                            & {n/a}         & {Madiba General}	         & {n/a, 20230309}\\\hline
+      510014000013982023  & Customer payment    & \{110000, 520130, 104012\}                    & {n/a}         & {AbbVie (House), AbbVie}	 & {20230207, n/a}\\\hline
+      510014000013232023  &  Customer payment   & \{110000, 104011\}	                          & {n/a}	        & {AbbVie}	                 & {20230103, n/a}\\\hline
+    \end{tabular}
+    }
+  \end{center}
+  \end{frame}
+
 \end{document}
